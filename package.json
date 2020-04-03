@@ -8,6 +8,8 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@nivo/bar": "^0.61.1",
+    "@nivo/line": "^0.61.1",
     "core-js": "^3.6.4",
     "isomorphic-unfetch": "3.0.0",
     "next": "latest",

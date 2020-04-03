@@ -1,22 +1,12 @@
 import React from 'react'
-import Link from 'next/link'
-import styled from 'styled-components'
-import Layout from '../components/Layout'
+import Layout from '@/components/Layout'
+import Graph from '@/components/Graph'
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <H1>Hello Next.js 👋</H1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
+  <Layout title="Home">
+      <p>電気比較</p>
+      <Graph />
   </Layout>
 )
 
 export default IndexPage
-
-const H1 = styled.h1`
-  font-size: 18px;
-  color: #666;
-`

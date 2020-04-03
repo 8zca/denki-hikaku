@@ -4,6 +4,7 @@ import 'core-js/features/array/find-index'
 import 'core-js/features/array/includes'
 import 'core-js/features/object/values'
 
+import React from 'react'
 import { AppProps } from 'next/app'
 
 function App({ Component, pageProps }: AppProps) {
