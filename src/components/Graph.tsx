@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ResponsiveLine } from '@nivo/line'
-import { calcLpio, calcTepco, calcLooop, calcAshita, calcRakuten, calcTokyu } from '@/utils/calculatePrice'
+import { calcLpio, calcTepco, calcLooop, calcAshita, calcRakuten, calcTokyu, calcOyayubi } from '@/utils/calculatePrice'
 
 const Graph: React.FC = (): JSX.Element => (
   <Wrapper>
@@ -95,7 +95,7 @@ const makeData = () => {
   const data: Array<Item> = []
   const amp = 50
   
-  const services = ['Lpio', 'Tepco', 'Looop', 'Ashita', 'Rakuten', 'Tokyu']
+  const services = ['Lpio', 'Tepco', 'Looop', 'Ashita', 'Rakuten', 'Tokyu', 'Oyayubi']
   services.forEach(s => {
     const row: Item = {
       id: s,
@@ -114,6 +114,8 @@ const makeData = () => {
         y = calcAshita(amp, kwh)
       } else if (s === 'Rakuten') {
         y = calcRakuten(amp, kwh)
+      } else if (s === 'Oyayubi') {
+        y = calcOyayubi(amp, kwh)
       } else {
         y = calcTokyu(amp, kwh)
       }

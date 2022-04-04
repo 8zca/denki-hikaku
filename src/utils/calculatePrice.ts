@@ -46,6 +46,10 @@ export const calcRakuten = (_: number, kwh: number): number => {
   return 26.5 * kwh
 }
 
+export const calcOyayubi = (_: number, kwh: number) => {
+  return 26.4 * kwh
+}
+
 const calcStepPrice = (steps: Array<{ min: number; max: number; price: number }>, kwh: number) => {
   return steps.reduce((accm, current, currentIndex) => {
     if (currentIndex > 0 && steps[currentIndex - 1].max >= kwh) return accm
