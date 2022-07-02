@@ -22,11 +22,11 @@ jobs:
       #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
       #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
       #     alias-domains: ${{ steps.set_url.outputs.url }}
-      - name: log
-        run: |
-          echo ${{ github.event.pull_request.opened }}
-          echo ${{ github.event.pull_request.merged }}
-          echo ${{ github.event_name }}
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
       - name: Output preview URL
         if: ${{ github.event.pull_request.opened == true }}
         uses: github-actions-up-and-running/pr-comment@v1.0.0
