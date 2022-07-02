@@ -11,10 +11,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Deploy staging
-        uses: amondnet/vercel-action@v19
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-          alias-domains: pr-{{PR_NUMBER}}-denki-preview-888.vercel.app
+      - name: Set url
+        id: set_url
+        run: echo "::set-output name=url::pr-${{ github.event.number }}-denki-preview-888.vercel.app"
+
+      # - name: Deploy staging
+      #   uses: amondnet/vercel-action@v19
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+      #     alias-domains: ${{ steps.set_url.outputs.url }}
+
+      # - name: Output preview URL
+      #   if: ${{ github.event.action == 'opened' }}
+      #   uses: thollander/actions-comment-pull-request@v1
+      #   with:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     message: ":detective: Preview Url: https://${{ steps.set_url.outputs.url }}"
