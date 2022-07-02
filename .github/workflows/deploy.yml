@@ -13,7 +13,7 @@ jobs:
 
       - name: Set url
         id: set_url
-        run: echo "::set-output name=url::pr-${{ PR_NUMBER }}-denki-preview-888.vercel.app"
+        run: echo "::set-output name=url::pr-${{ github.event.number }}-denki-preview-888.vercel.app"
 
       - name: Deploy staging
         uses: amondnet/vercel-action@v19
