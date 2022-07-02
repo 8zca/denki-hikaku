@@ -22,13 +22,9 @@ jobs:
       #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
       #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
       #     alias-domains: ${{ steps.set_url.outputs.url }}
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
-        run: echo "$GITHUB_CONTEXT"
 
       - name: Output preview URL
-        if: ${{ github.event.pull_request.opened == true }}
+        if: ${{ github.event.action.opened == 'opened' }}
         uses: github-actions-up-and-running/pr-comment@v1.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
