@@ -15,14 +15,18 @@ jobs:
         id: set_url
         run: echo "::set-output name=url::pr-${{ github.event.number }}-denki-preview-888.vercel.app"
 
-      - name: Deploy staging
-        uses: amondnet/vercel-action@v19
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-          alias-domains: ${{ steps.set_url.outputs.url }}
-
+      # - name: Deploy staging
+      #   uses: amondnet/vercel-action@v19
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
+      #     alias-domains: ${{ steps.set_url.outputs.url }}
+      - name: log
+        run: |
+          echo ${{ github.event.pull_request.opened }}
+          echo ${{ github.event.pull_request.merged }}
+          echo ${{ github.event_name }}
       - name: Output preview URL
         if: ${{ github.event.pull_request.opened == true }}
         uses: github-actions-up-and-running/pr-comment@v1.0.0
